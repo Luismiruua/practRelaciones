@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('extraescolares', function (Blueprint $table) {
+        Schema::create('alumnos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            
+            $table->integer('edad');
+            $table->string('sexo');                
+            $table->foreignId('profesor_id')->constrained('profesores');         
+            $table->timestamps();
+
         });
     }
 
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('extraescolares');
+        Schema::dropIfExists('alumnos');
     }
 };
